@@ -19,7 +19,6 @@
       // function Header() {
       //   return <h1>This is Header Component ⚡</h1>;
       // }
-
       // function Btn() {
       //   return (
       //     <p
@@ -31,27 +30,43 @@
       //     </p>
       //   );
       // }
+      // function HomePage() {
+      //   return (
+      //     <>
+      //       <Header />
+      //       <Btn />
+      //     </>
+      //   );
+      // }
 
       // 02. PROPS
-      function Header(props) {
-        return <h1>Hello {props.name} ⚡</h1>;
+      // function Header(props) {
+      //   return <h1>Hello {props.name} ⚡</h1>;
+      // }
+      // function HomePage() {
+      //   return (
+      //     <>
+      //       <Header name="Albi" />
+      //       <Header name="Mudakar" />
+      //     </>
+      //   );
+      // }
+
+      // 03. PROPS REFACTOR
+      function Header({ name }) {
+        return <h1>Belajar React {name ? name : 'Albi'} 📚</h1>;
       }
 
       function HomePage() {
         return (
           <>
-            <Header name="Albi" />
+            <Header />
             <Header name="Mudakar" />
           </>
         );
       }
 
       root.render(<HomePage />);
-
-      // <>
-      //   <h1 className="heading">Belajar React Pemula ⚡</h1>
-      //
-      // </>
     </script>
   </body>
 </html>
