@@ -15,27 +15,33 @@
       const container = document.getElementById('root');
       const root = ReactDOM.createRoot(container);
 
-      function Header() {
-        return <h1>This is Header Component ⚡</h1>;
-      }
+      // 01.COMPONENT
+      // function Header() {
+      //   return <h1>This is Header Component ⚡</h1>;
+      // }
 
-      function Btn() {
-        return (
-          <p
-            Style="background-color: #41DEDE; color: white; width: 50px; padding: 10px; text-align: center; border-radius: 70px; cursor: pointer;"
-            onClick={(e) => {
-              alert('OK!');
-            }}>
-            Click
-          </p>
-        );
+      // function Btn() {
+      //   return (
+      //     <p
+      //       Style="background-color: #41DEDE; color: white; width: 50px; padding: 10px; text-align: center; border-radius: 70px; cursor: pointer;"
+      //       onClick={(e) => {
+      //         alert('OK!');
+      //       }}>
+      //       Click
+      //     </p>
+      //   );
+      // }
+
+      // 02. PROPS
+      function Header(props) {
+        return <h1>Hello {props.name} ⚡</h1>;
       }
 
       function HomePage() {
         return (
           <>
-            <Header />
-            <Btn />
+            <Header name="Albi" />
+            <Header name="Mudakar" />
           </>
         );
       }
