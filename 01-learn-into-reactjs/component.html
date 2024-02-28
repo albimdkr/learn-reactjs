@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+
+      // 01.COMPONENT
+      function Header() {
+        return <h1>This is Header Component ⚡</h1>;
+      }
+
+      function Btn() {
+        return (
+          <p
+            Style="background-color: #41DEDE; color: white; width: 50px; padding: 10px; text-align: center; border-radius: 70px; cursor: pointer;"
+            onClick={(e) => {
+              alert('OK!');
+            }}>
+            Click
+          </p>
+        );
+      }
+
+      function HomePage() {
+        return (
+          <>
+            <Header />
+            <Btn />
+          </>
+        );
+      }
+
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
