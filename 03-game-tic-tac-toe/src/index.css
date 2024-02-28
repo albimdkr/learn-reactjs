@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply m-[20px] p-0 font-sans;
+  }
+}
+
+@layer components {
+
+  .btnLike {
+    @apply bg-slate-500 w-20 text-center text-slate-50 mx-auto rounded-md px-3 py-1 cursor-pointer hover:bg-slate-500/90 mt-96; 
+  }
+
+  .square {
+    @apply bg-slate-50 w-[35px] h-[35px] border border-slate-500 text-xl font-bold;
+  }
+
+  .board {
+    @apply flex flex-wrap w-[105px] h-[105px] mx-auto;
+  }
+
+ }
+
+@layer utilities {
+  .title {
+    @apply bg-sky-600 px-2 py-3 text-center hover:bg-sky-600/90 text-slate-50 mb-14;
+  }
+ }
+
