@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Unique Key</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+
+      // Error because no unique key ❌
+      // { 
+      //   navbar.map((nav) => (
+      //     <li>{nav}</li>
+      //   ))
+      // }
+      // Source: https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key
+
+      // Solution ✅
+      function HomePage() {
+        const navbar = ['About', 'Project', 'Contact'];
+        return (
+          <>
+            <ul>
+              {
+                navbar.map((nav) => (
+                  <li key={nav}>{nav}</li>
+                ))
+              }
+            </ul>
+          </>
+        );
+      }
+
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
