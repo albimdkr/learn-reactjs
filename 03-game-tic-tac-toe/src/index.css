@@ -23,7 +23,11 @@
   }
 
   .board {
-    @apply flex flex-wrap w-[105px] h-[105px] mx-auto;
+    @apply flex flex-wrap w-[105px] h-[105px];
+  }
+
+  .btn-time {
+    @apply bg-sky-600 hover:bg-sky-600/90 text-sm rounded-xl px-3 py-1 text-slate-50 my-1 ml-16;
   }
 
  }
@@ -35,6 +39,14 @@
 
   .status {
     @apply text-xs mb-2 text-center;
+  }
+
+  .game {
+    @apply flex justify-center; 
+  }
+
+  .game-info {
+    @apply my-4;
   }
  }
 
