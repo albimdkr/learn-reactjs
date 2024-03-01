@@ -1,0 +1,46 @@
+1. Component
+Merupakan blok pembangun dasar dari UI React Pada dasaranya sebuah Function. Komponen adalah fungsi JavaScript yang mengembalikan elemen HTML.
+Contoh: Component Button, Component Slider, Etc.
+
+2. Props (Properties)
+Singkatan dari properties. Props digunakan untuk meneruskan data yang di tangkap sebagai object dari komponen induk ke komponen anak. Props memungkinkan Anda membuat komponen yang dapat digunakan kembali dengan data yang berbeda.
+dihtml props seperti attribute 
+
+3. Unique Key
+Kenapa ada warning? dikarnakan ada prop key yang hilang
+dikarnekan React butuh seusuatu untuk menandai sebuah elemen dengan nilai unik, karna react harus tau elemen mana yang akan berubah
+pada kasus unique-key.html menggunakan navbar sebagai key, karna kebetulan nama setiap Item nya tidak ada yang sama
+
+4. State
+Banyak hal yang akan berubah didalam suatu halaman karena ada interaksi yang dilkaukan oleh user 
+Pada React data yang berubah seiring waktu disebut 'STATE'
+Bisa menambahkan state dalam Component manapun ketika dibutuhkan
+Untuk menambah interaktivitas pada element, React Menggunakan State dan juga Event Handler
+
+5. State & Hooks
+Contoh penggunaan: button likes dan total likes nya [Likes (0)]
+React mempunyai serangkaian function yang disebut dengan Hooks,
+yang memungkinkan untuk menambahkan suatu logic pada Component
+Salat satu digunakan untuk mengelola State adalah setState()
+yang mengembalikan nilai berupa array dan bisa akses menggunakan teknik destructuring
+Element Pertama pada Array: State
+Element Kedua pada Array: Function untuk mengubah si nilai nya
+Misalkan
+Element Pertama State nya: likes
+Elemenet Kedua Function nya: setLikes
+code: const [likes, setLikes] = React.useState();
+code tentukan variable nilai default: const [likes, setLikes] = React.useState(0);
+State Updater Function
+Practice: 01-learn-into-reactjs > state-hooks.html
+
+6. Virtual DOM
+React menggunakan virtual DOM untuk mengoptimalkan performa rendering. Virtual DOM adalah representasi in-memory dari DOM yang sebenarnya. React hanya memperbarui bagian DOM yang benar-benar berubah, sehingga meningkatkan performa aplikasi.
+
+7. Lifecycle methods
+Metode khusus yang dipanggil pada berbagai tahap siklus hidup suatu komponen. Lifecycle methods memungkinkan Anda melakukan berbagai tugas, seperti:
+- Mengatur state awal
+- Memasang dan melepas event listener
+- Memperbarui DOM
+
+8. Routing
+Mekanisme untuk menavigasi antara different views atau halaman dalam aplikasi React. Routing memungkinkan Anda membuat aplikasi single-page application (SPA) yang dinamis
