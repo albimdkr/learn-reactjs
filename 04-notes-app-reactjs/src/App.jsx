@@ -28,17 +28,22 @@ export default function App() {
   // New State
   const [items, setItems] = useState(groceryItems);
 
-  // Handle to Manage State
+  // Handle to add Item with state
   function handleAddItem (item){
     // Immutablity
     setItems([...items, item])
+  }
+
+  // Handle Delete Item
+  function handleDeleteItem (id){
+    setItems((items) => items.filter((item) => item.id !== id));
   }
 
   return (
     <div className="App">
       <Header />
       <Form onAddItem={handleAddItem}/>
-      <GroceryList items={items}/>
+      <GroceryList items={items} onDeleteItem={handleDeleteItem}/>
       <Footer />
     </div>
   );
@@ -67,7 +72,6 @@ function Form ({ onAddItem }){
     setQuantity(1);
   }
 
-
   const quantityNum = [...Array(20)].map((_, i)=> (
     <option key={i + 1} value={i + 1}>
       {i + 1}
@@ -92,13 +96,13 @@ function Form ({ onAddItem }){
   );
 }
 
-function GroceryList ({ items }){
+function GroceryList ({ items, onDeleteItem }){
   return (
     <>
       <div className="list">
         <ul>
           {items.map((item) => (
-            <Item item={item} key={item.id} />
+            <Item item={item} key={item.id} onDeleteItem={onDeleteItem}/>
           ))}
         </ul>
       </div>
@@ -114,14 +118,14 @@ function GroceryList ({ items }){
   );
 }
 
-function Item({ item }){
+function Item({ item, onDeleteItem }){
   return (
     <li key={item.id}>
       <input type="checkbox" />
       <span style={item.checked ? { textDecoration: 'line-through' } : {}}>
         {item.name} {item.quantity}
       </span>
-      <button>&times;</button>
+      <button onClick={() => onDeleteItem(item.id)}>&times;</button>
     </li>
   );
 }
