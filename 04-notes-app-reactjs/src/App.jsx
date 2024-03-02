@@ -1,4 +1,27 @@
 /* eslint-disable react/no-unknown-property */
+
+    const groceryItems = [
+      {
+        id: 1,
+        name: 'Kopi Bubuk',
+        quantity: 2,
+        checked: true,
+      },
+      {
+        id: 2,
+        name: 'Gula Pasir',
+        quantity: 5,
+        checked: false,
+      },
+      {
+        id: 3,
+        name: 'Air Mineral',
+        quantity: 3,
+        checked: false,
+      },
+    ];
+
+
 export default function App() {
   return (
     <div className="App">
@@ -38,21 +61,9 @@ function GroceryList (){
     <>
       <div className="list">
         <ul>
-          <li>
-            <input type="checkbox" checked="true" />
-            <span Style="text-decoration: line-through;">1 Kopi</span>
-            <button>&times;</button>
-          </li>
-          <li>
-            <input type="checkbox" />
-            <span>5 Gula Pasir</span>
-            <button>&times;</button>
-          </li>
-          <li>
-            <input type="checkbox" />
-            <span>3 Air Mineral</span>
-            <button>&times;</button>
-          </li>
+          {groceryItems.map((item) => (
+            <Item item={item} key={item.id} />
+          ))}
         </ul>
       </div>
       <div className="actions">
@@ -64,6 +75,18 @@ function GroceryList (){
         <button>Bersihkan Daftar</button>
       </div>
     </>
+  );
+}
+
+function Item({ item }){
+  return (
+    <li key={item.id}>
+      <input type="checkbox" />
+      <span style={item.checked ? { textDecoration: 'line-through' } : {}}>
+        {item.name} {item.quantity}
+      </span>
+      <button>&times;</button>
+    </li>
   );
 }
 
