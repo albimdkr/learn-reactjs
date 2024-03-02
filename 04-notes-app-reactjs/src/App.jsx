@@ -2,33 +2,43 @@
 import { useState } from "react";
 
     const groceryItems = [
-      {
-        id: 1,
-        name: 'Kopi Bubuk',
-        quantity: 2,
-        checked: true,
-      },
-      {
-        id: 2,
-        name: 'Gula Pasir',
-        quantity: 5,
-        checked: false,
-      },
-      {
-        id: 3,
-        name: 'Air Mineral',
-        quantity: 3,
-        checked: false,
-      },
+      // {
+      //   id: 1,
+      //   name: 'Kopi Bubuk',
+      //   quantity: 2,
+      //   checked: true,
+      // },
+      // {
+      //   id: 2,
+      //   name: 'Gula Pasir',
+      //   quantity: 5,
+      //   checked: false,
+      // },
+      // {
+      //   id: 3,
+      //   name: 'Air Mineral',
+      //   quantity: 3,
+      //   checked: false,
+      // },
     ];
 
 
 export default function App() {
+
+  // New State
+  const [items, setItems] = useState(groceryItems);
+
+  // Handle to Manage State
+  function handleAddItem (item){
+    // Immutablity
+    setItems([...items, item])
+  }
+
   return (
     <div className="App">
       <Header />
-      <Form />
-      <GroceryList />
+      <Form onAddItem={handleAddItem}/>
+      <GroceryList items={items}/>
       <Footer />
     </div>
   );
@@ -38,8 +48,7 @@ function Header (){
   return <h1>Catatan Belanjaku 📝</h1>;
 }
 
-function Form (){
-
+function Form ({ onAddItem }){
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState(1);
 
@@ -50,6 +59,7 @@ function Form (){
     if (!name) return;
 
     const newItem = { name, quantity, checked:false, id:Date.now() }
+    onAddItem(newItem);
     console.log(newItem);
     
     // reset
@@ -82,12 +92,12 @@ function Form (){
   );
 }
 
-function GroceryList (){
+function GroceryList ({ items }){
   return (
     <>
       <div className="list">
         <ul>
-          {groceryItems.map((item) => (
+          {items.map((item) => (
             <Item item={item} key={item.id} />
           ))}
         </ul>
