@@ -39,11 +39,21 @@ export default function App() {
     setItems((items) => items.filter((item) => item.id !== id));
   }
 
+  // Handle Toggle
+  function handleToggleItem (id) {                                 
+    // (HFO-MAP) items petakan dari setiap item nya karna ada salahsatu yang akan berubah, (expresi) item.id sama tidak dengan id yang di klik ?(ternary) jika benar maka (spread) buatkan object array item dengan checked nya yang berbeda dengan isi nya tergantung kondisi pada saat ini apa (!item.checked) NOT yang tadinya true > false, sebalik nya. Jika tidak atau selain yang user klik maka biarkan saja 
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  }
+
   return (
     <div className="App">
       <Header />
       <Form onAddItem={handleAddItem}/>
-      <GroceryList items={items} onDeleteItem={handleDeleteItem}/>
+      <GroceryList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
       <Footer />
     </div>
   );
@@ -96,13 +106,13 @@ function Form ({ onAddItem }){
   );
 }
 
-function GroceryList ({ items, onDeleteItem }){
+function GroceryList ({ items, onDeleteItem, onToggleItem }){
   return (
     <>
       <div className="list">
         <ul>
           {items.map((item) => (
-            <Item item={item} key={item.id} onDeleteItem={onDeleteItem}/>
+            <Item item={item} key={item.id} onDeleteItem={onDeleteItem} onToggleItem={onToggleItem} />
           ))}
         </ul>
       </div>
@@ -118,10 +128,10 @@ function GroceryList ({ items, onDeleteItem }){
   );
 }
 
-function Item({ item, onDeleteItem }){
+function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <li key={item.id}>
-      <input type="checkbox" />
+      <input type="checkbox" checked={item.checked} onChange={() => onToggleItem(item.id)} />
       <span style={item.checked ? { textDecoration: 'line-through' } : {}}>
         {item.name} {item.quantity}
       </span>
