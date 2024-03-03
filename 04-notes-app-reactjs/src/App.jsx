@@ -49,11 +49,16 @@ export default function App() {
     );
   }
 
+  // Handle Clear
+  function handleBtnClearItems (){
+    setItems([])
+  }
+
   return (
     <div className="App">
       <Header />
       <Form onAddItem={handleAddItem}/>
-      <GroceryList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
+      <GroceryList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} onClearBtnItems={handleBtnClearItems} />
       <Footer />
     </div>
   );
@@ -106,7 +111,7 @@ function Form ({ onAddItem }){
   );
 }
 
-function GroceryList ({ items, onDeleteItem, onToggleItem }){
+function GroceryList ({ items, onDeleteItem, onToggleItem, onClearBtnItems }){
   return (
     <>
       <div className="list">
@@ -122,7 +127,7 @@ function GroceryList ({ items, onDeleteItem, onToggleItem }){
           <option value="name">Urutkan berdasarkan nama barang</option>
           <option value="checked">Urutkan berdasarkan ceklis</option>
         </select>
-        <button>Bersihkan Daftar</button>
+        <button onClick={onClearBtnItems}>Bersihkan Daftar</button>
       </div>
     </>
   );
