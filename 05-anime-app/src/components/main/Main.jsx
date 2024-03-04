@@ -3,10 +3,8 @@ import { useState } from "react";
 
 import SelectedBox from "./SelectedBox/SelectedBox";
 import ListBox from "./ListBox/ListBox";
-import animesData from '../../assets/data/AnimesData';
 
-export default function Main (){
-    const [animes, setAnimes] = useState(animesData);
+export default function Main ({ animes }){
     const [selectedAnime, setSelectedAnime] = useState(animes[0]);
 
     function handleSelectedAnime(id) {

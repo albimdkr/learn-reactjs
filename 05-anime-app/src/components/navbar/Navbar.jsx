@@ -1,11 +1,11 @@
 import Logo from "./Logo";
 import Search from "./Search";
 
-export default function Navbar (){
+export default function Navbar ({animes}){
     return (
       <nav className="nav-bar">
         <Logo />
-        <Search />
+        <Search animes={animes}/>
       </nav>
     );
 }
